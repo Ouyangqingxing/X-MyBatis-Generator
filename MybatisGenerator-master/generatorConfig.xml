@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<!-- ★注意，生成后需手动修改service、serviceImpl层返回类型★ -->
+    <!-- 1.数据库驱动包位置 -->
+    <classPathEntry location="ojdbc14-10.2.0.4.0.jar"/>
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+    	<!-- 2.配置用户信息 -->
+    	<user name = "Jason" year = "2017" company = "XXX公司"></user>
+        <commentGenerator>  
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="false"/>
+        </commentGenerator>
+        <!-- 3.数据库链接URL、用户名、密码 -->
+        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" 
+        connectionURL="jdbc:oracle:thin:@127.0.0.1:1521:oradb" userId="root" password="root"></jdbcConnection>
+        <javaTypeResolver><property name="forceBigDecimals" value="false"/></javaTypeResolver>  
+        <!-- 4.生成entity层的包名和位置 -->
+        <javaModelGenerator targetPackage="com.jason.entity" targetProject="target">  
+            <property name="enableSubPackages" value="true"/>  
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!-- 5.生成的mapper层文件包名和位置 -->
+        <sqlMapGenerator targetPackage="com.jason.mapper" targetProject="target">  
+            <property name="enableSubPackages" value="true"/>  
+        </sqlMapGenerator>
+        <!-- 6.生成dao层的包名和位置 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.jason.dao" targetProject="target">  
+            <property name="enableSubPackages" value="true"/>  
+        </javaClientGenerator>
+        <!-- 7.生成service层的包名和位置 -->
+        <javaServiceGenerator type="SERVICE" targetPackage="com.jason.service" targetProject="target">  
+            <property name="enableSubPackages" value="true"/>  
+        </javaServiceGenerator>
+        <!-- 8.生成serviceImpl层的包名和位置 -->
+        <javaServiceImplGenerator type="SERVICEIMPL" targetPackage="com.jason.service.impl" targetProject="target">  
+            <property name="enableSubPackages" value="true"/>  
+        </javaServiceImplGenerator>
+		<!-- 9.要生成的表 -->
+		<!-- 请配置表名、类名、是否有主键 -->
+		<table tableName="user_info" domainObjectName="UserInfo" hasPrimaryKey="true"
+		 enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+		</table>
+    </context>  
+</generatorConfiguration>  

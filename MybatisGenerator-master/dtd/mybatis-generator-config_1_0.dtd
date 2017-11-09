@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generatorConfiguration 元素是根节点 -->
+<!ELEMENT generatorConfiguration (properties? , classPathEntry* , context+)>
+
+<!-- properties 元素定义了标准的Java资源文件 包括剩余配置文件的占位符 -->
+<!ELEMENT properties EMPTY>
+<!ATTLIST properties
+  resource CDATA #IMPLIED
+  url CDATA #IMPLIED
+>
+<!-- context 元素描述了生成文件以及源表的上下文 -->
+<!ELEMENT context (user*,property*, plugin*, commentGenerator?, jdbcConnection,javaTypeResolver?,
+	javaModelGenerator, sqlMapGenerator?,javaClientGenerator?,
+	javaServiceGenerator?,javaServiceImplGenerator?,table+)
+>
+<!ATTLIST context id ID #REQUIRED
+  defaultModelType CDATA #IMPLIED
+  targetRuntime CDATA #IMPLIED
+  introspectedColumnImpl CDATA #IMPLIED
+>
+<!-- jdbcConnection 元素 -->
+<!ELEMENT jdbcConnection (property*)>
+<!ATTLIST jdbcConnection 
+  driverClass CDATA #REQUIRED
+  connectionURL CDATA #REQUIRED
+  userId CDATA #IMPLIED
+  password CDATA #IMPLIED
+>
+<!-- classPathEntry 元素用来添加JDBC驱动到运行环境 可多次使用 -->
+<!ELEMENT classPathEntry EMPTY>
+<!ATTLIST classPathEntry
+  location CDATA #REQUIRED
+>
+<!-- User 元素,配置用户信息 -->
+<!ELEMENT user EMPTY>
+<!ATTLIST user
+  name CDATA #REQUIRED
+  year CDATA #REQUIRED
+  company CDATA #REQUIRED
+>
+<!-- property 元素用来添加自定义资源元素 可多次使用 -->
+<!ELEMENT property EMPTY>
+<!ATTLIST property
+  name CDATA #REQUIRED
+  value CDATA #REQUIRED
+>
+<!-- plugin 元素 -->
+<!ELEMENT plugin (property*)>
+<!ATTLIST plugin
+  type CDATA #REQUIRED
+>
+<!-- javaModelGenerator 元素 -->
+<!ELEMENT javaModelGenerator (property*)>
+<!ATTLIST javaModelGenerator
+  targetPackage CDATA #REQUIRED
+  targetProject CDATA #REQUIRED
+>
+<!-- javaTypeResolver 元素用来定义Java类型转换器。Java类型转换器用来换算数据库类型到Java类型
+	默认的Java类型转换器会将JDBC DECIMAL、NUMERIC 整型替换(Long, Integer, Short, etc.)-->
+<!ELEMENT javaTypeResolver (property*)>
+<!ATTLIST javaTypeResolver
+  type CDATA #IMPLIED
+>
+<!-- sqlMapGenerator 元素 -->
+<!ELEMENT sqlMapGenerator (property*)>
+<!ATTLIST sqlMapGenerator
+  targetPackage CDATA #REQUIRED
+  targetProject CDATA #REQUIRED
+>
+<!-- javaClientGenerator 元素 -->
+<!ELEMENT javaClientGenerator (property*)>
+<!ATTLIST javaClientGenerator
+  type CDATA #REQUIRED
+  targetPackage CDATA #REQUIRED
+  targetProject CDATA #REQUIRED
+  implementationPackage CDATA #IMPLIED
+>
+<!-- =======================javaServiceGenerator======================= 元素 -->
+<!ELEMENT javaServiceGenerator (property*)>
+<!ATTLIST javaServiceGenerator
+  type CDATA #REQUIRED
+  targetPackage CDATA #REQUIRED
+  targetProject CDATA #REQUIRED
+  implementationPackage CDATA #IMPLIED
+>
+<!-- =======================javaServiceImplGenerator======================= 元素 -->
+<!ELEMENT javaServiceImplGenerator (property*)>
+<!ATTLIST javaServiceImplGenerator
+  type CDATA #REQUIRED
+  targetPackage CDATA #REQUIRED
+  targetProject CDATA #REQUIRED
+  implementationPackage CDATA #IMPLIED
+>
+<!-- table 元素  -->
+<!ELEMENT table (property*, generatedKey?, columnRenamingRule?, (columnOverride | ignoreColumn)*) >
+<!ATTLIST table
+  catalog CDATA #IMPLIED
+  schema CDATA #IMPLIED
+  tableName CDATA #REQUIRED
+  alias CDATA #IMPLIED
+  domainObjectName CDATA #REQUIRED
+  hasPrimaryKey CDATA #REQUIRED
+  enableInsert CDATA #IMPLIED
+  enableSelectByPrimaryKey CDATA #IMPLIED
+  enableSelectByExample CDATA #IMPLIED
+  enableUpdateByPrimaryKey CDATA #IMPLIED
+  enableDeleteByPrimaryKey CDATA #IMPLIED
+  enableDeleteByExample CDATA #IMPLIED
+  enableCountByExample CDATA #IMPLIED
+  enableUpdateByExample CDATA #IMPLIED
+  selectByPrimaryKeyQueryId CDATA #IMPLIED
+  selectByExampleQueryId CDATA #IMPLIED
+  modelType CDATA #IMPLIED
+  escapeWildcards CDATA #IMPLIED
+  delimitIdentifiers CDATA #IMPLIED
+  delimitAllColumns CDATA #IMPLIED
+>
+<!-- columnOverride 元素用来修改某些列的默认属性值  -->
+<!ELEMENT columnOverride (property*)>
+<!ATTLIST columnOverride
+  column CDATA #REQUIRED
+  property CDATA #IMPLIED
+  javaType CDATA #IMPLIED
+  jdbcType CDATA #IMPLIED
+  typeHandler CDATA #IMPLIED
+  delimitedColumnName CDATA #IMPLIED
+>
+<!-- 元素用来定义哪些列可以忽视 模型对象中没有生成的SQL将引用列，也不会生成任何属性 -->
+<!ELEMENT ignoreColumn EMPTY>
+<!ATTLIST ignoreColumn
+  column CDATA #REQUIRED
+  delimitedColumnName CDATA #IMPLIED
+>
+<!-- generatedKey 元素 -->
+<!ELEMENT generatedKey EMPTY>
+<!ATTLIST generatedKey
+  column CDATA #REQUIRED
+  sqlStatement CDATA #REQUIRED
+  identity CDATA #IMPLIED
+  type CDATA #IMPLIED
+>
+<!-- columnRenamingRule 元素用来列举列的重命名规则，在计算相应的属性名称之前  -->
+<!ELEMENT columnRenamingRule EMPTY>
+<!ATTLIST columnRenamingRule
+  searchString CDATA #REQUIRED
+  replaceString CDATA #IMPLIED
+>
+<!-- commentGenerator 元素 -->
+<!ELEMENT commentGenerator (property*)>
+<!ATTLIST commentGenerator
+  type CDATA #IMPLIED
+>
+  

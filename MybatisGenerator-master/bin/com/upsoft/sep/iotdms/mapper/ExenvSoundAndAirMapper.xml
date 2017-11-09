@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.upsoft.sep.iotdms.service.impl.ExenvSoundAndAirServiceImpl" >
+
+    <resultMap id="BaseResultMap" type="com.upsoft.sep.iotdms.entity.ExenvSoundAndAir" >
+        <id column="ID" property="id" jdbcType="VARCHAR" />
+        <result column="OBJECT_CODE" property="objectCode" jdbcType="VARCHAR" />
+        <result column="OBJECT_NAME" property="objectName" jdbcType="VARCHAR" />
+        <result column="XZQH_SN_CODE" property="xzqhSnCode" jdbcType="VARCHAR" />
+        <result column="XZQH_SN_NAME" property="xzqhSnName" jdbcType="VARCHAR" />
+        <result column="XZQH_SI_CODE" property="xzqhSiCode" jdbcType="VARCHAR" />
+        <result column="XZQH_SI_NAME" property="xzqhSiName" jdbcType="VARCHAR" />
+        <result column="XZQH_X_CODE" property="xzqhXCode" jdbcType="VARCHAR" />
+        <result column="XZQH_X_NAME" property="xzqhXName" jdbcType="VARCHAR" />
+        <result column="XZQH_JD_CODE" property="xzqhJdCode" jdbcType="VARCHAR" />
+        <result column="XZQH_JD_NAME" property="xzqhJdName" jdbcType="VARCHAR" />
+        <result column="XZQH_C_CODE" property="xzqhCCode" jdbcType="VARCHAR" />
+        <result column="XZQH_C_NAME" property="xzqhCName" jdbcType="VARCHAR" />
+        <result column="STATUS" property="status" jdbcType="VARCHAR" />
+        <result column="CREATE_MAN_ID" property="createManId" jdbcType="VARCHAR" />
+        <result column="CREATE_ORG_ID" property="createOrgId" jdbcType="VARCHAR" />
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="LAST_UPDATE_USER_ID" property="lastUpdateUserId" jdbcType="VARCHAR" />
+        <result column="LAST_UPDATE_TIME" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+        <result column="VERSION_TIME" property="versionTime" jdbcType="TIMESTAMP" />
+        <result column="CATALOG_ID" property="catalogId" jdbcType="VARCHAR" />
+        <result column="EXTEND_COLUMN" property="extendColumn" jdbcType="VARCHAR" />
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        ID, OBJECT_CODE, OBJECT_NAME, XZQH_SN_CODE, XZQH_SN_NAME, XZQH_SI_CODE, XZQH_SI_NAME, 
+        XZQH_X_CODE, XZQH_X_NAME, XZQH_JD_CODE, XZQH_JD_NAME, XZQH_C_CODE, XZQH_C_NAME, STATUS, 
+        CREATE_MAN_ID, CREATE_ORG_ID, CREATE_TIME, LAST_UPDATE_USER_ID, LAST_UPDATE_TIME, 
+        VERSION_TIME, CATALOG_ID, EXTEND_COLUMN, REMARK
+    </sql>
+
+    <select id="selectById" resultMap="BaseResultMap" parameterType="com.upsoft.sep.iotdms.param.SelectByIdParam" >
+        <!-- 查询 -->
+        select 
+        <include refid="Base_Column_List" />
+            from EXENV_SOUNDANDAIR
+                where ID = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteById" parameterType="com.upsoft.sep.iotdms.param.DeleteByIdParam" >
+        <!-- 删除 -->
+        delete from EXENV_SOUNDANDAIR
+            where ID = #{id,jdbcType=VARCHAR}
+    </delete>
+
+    <insert id="insert" parameterType="com.upsoft.sep.iotdms.entity.ExenvSoundAndAir" >
+        <!-- 新增 -->
+        insert into EXENV_SOUNDANDAIR
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                ID,
+            </if>
+            <if test="objectCode != null" >
+                OBJECT_CODE,
+            </if>
+            <if test="objectName != null" >
+                OBJECT_NAME,
+            </if>
+            <if test="xzqhSnCode != null" >
+                XZQH_SN_CODE,
+            </if>
+            <if test="xzqhSnName != null" >
+                XZQH_SN_NAME,
+            </if>
+            <if test="xzqhSiCode != null" >
+                XZQH_SI_CODE,
+            </if>
+            <if test="xzqhSiName != null" >
+                XZQH_SI_NAME,
+            </if>
+            <if test="xzqhXCode != null" >
+                XZQH_X_CODE,
+            </if>
+            <if test="xzqhXName != null" >
+                XZQH_X_NAME,
+            </if>
+            <if test="xzqhJdCode != null" >
+                XZQH_JD_CODE,
+            </if>
+            <if test="xzqhJdName != null" >
+                XZQH_JD_NAME,
+            </if>
+            <if test="xzqhCCode != null" >
+                XZQH_C_CODE,
+            </if>
+            <if test="xzqhCName != null" >
+                XZQH_C_NAME,
+            </if>
+            <if test="status != null" >
+                STATUS,
+            </if>
+            <if test="createManId != null" >
+                CREATE_MAN_ID,
+            </if>
+            <if test="createOrgId != null" >
+                CREATE_ORG_ID,
+            </if>
+            <if test="createTime != null" >
+                CREATE_TIME,
+            </if>
+            <if test="lastUpdateUserId != null" >
+                LAST_UPDATE_USER_ID,
+            </if>
+            <if test="lastUpdateTime != null" >
+                LAST_UPDATE_TIME,
+            </if>
+            <if test="versionTime != null" >
+                VERSION_TIME,
+            </if>
+            <if test="catalogId != null" >
+                CATALOG_ID,
+            </if>
+            <if test="extendColumn != null" >
+                EXTEND_COLUMN,
+            </if>
+            <if test="remark != null" >
+                REMARK,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="objectCode != null" >
+                #{objectCode,jdbcType=VARCHAR},
+            </if>
+            <if test="objectName != null" >
+                #{objectName,jdbcType=VARCHAR},
+            </if>
+            <if test="xzqhSnCode != null" >
+                #{xzqhSnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="xzqhSnName != null" >
+                #{xzqhSnName,jdbcType=VARCHAR},
+            </if>
+            <if test="xzqhSiCode != null" >
+                #{xzqhSiCode,jdbcType=VARCHAR},
+            </if>
+            <if test="xzqhSiName != null" >
+                #{xzqhSiName,jdbcType=VARCHAR},
+            </if>
+            <if test="xzqhXCode != null" >
+                #{xzqhXCode,jdbcType=VARCHAR},
+            </if>
+            <if test="xzqhXName != null" >
+                #{xzqhXName,jdbcType=VARCHAR},
+            </if>
+            <if test="xzqhJdCode != null" >
+                #{xzqhJdCode,jdbcType=VARCHAR},
+            </if>
+            <if test="xzqhJdName != null" >
+                #{xzqhJdName,jdbcType=VARCHAR},
+            </if>
+            <if test="xzqhCCode != null" >
+                #{xzqhCCode,jdbcType=VARCHAR},
+            </if>
+            <if test="xzqhCName != null" >
+                #{xzqhCName,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null" >
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="createManId != null" >
+                #{createManId,jdbcType=VARCHAR},
+            </if>
+            <if test="createOrgId != null" >
+                #{createOrgId,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null" >
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUpdateUserId != null" >
+                #{lastUpdateUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="lastUpdateTime != null" >
+                #{lastUpdateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="versionTime != null" >
+                #{versionTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="catalogId != null" >
+                #{catalogId,jdbcType=VARCHAR},
+            </if>
+            <if test="extendColumn != null" >
+                #{extendColumn,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null" >
+                #{remark,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com.upsoft.sep.iotdms.entity.ExenvSoundAndAir" >
+        <!-- 修改 -->
+        update EXENV_SOUNDANDAIR
+        <set >
+            <if test="objectCode != null" >
+                OBJECT_CODE = #{objectCode,jdbcType=VARCHAR},
+            </if>
+            <if test="objectName != null" >
+                OBJECT_NAME = #{objectName,jdbcType=VARCHAR},
+            </if>
+            <if test="xzqhSnCode != null" >
+                XZQH_SN_CODE = #{xzqhSnCode,jdbcType=VARCHAR},
+            </if>
+            <if test="xzqhSnName != null" >
+                XZQH_SN_NAME = #{xzqhSnName,jdbcType=VARCHAR},
+            </if>
+            <if test="xzqhSiCode != null" >
+                XZQH_SI_CODE = #{xzqhSiCode,jdbcType=VARCHAR},
+            </if>
+            <if test="xzqhSiName != null" >
+                XZQH_SI_NAME = #{xzqhSiName,jdbcType=VARCHAR},
+            </if>
+            <if test="xzqhXCode != null" >
+                XZQH_X_CODE = #{xzqhXCode,jdbcType=VARCHAR},
+            </if>
+            <if test="xzqhXName != null" >
+                XZQH_X_NAME = #{xzqhXName,jdbcType=VARCHAR},
+            </if>
+            <if test="xzqhJdCode != null" >
+                XZQH_JD_CODE = #{xzqhJdCode,jdbcType=VARCHAR},
+            </if>
+            <if test="xzqhJdName != null" >
+                XZQH_JD_NAME = #{xzqhJdName,jdbcType=VARCHAR},
+            </if>
+            <if test="xzqhCCode != null" >
+                XZQH_C_CODE = #{xzqhCCode,jdbcType=VARCHAR},
+            </if>
+            <if test="xzqhCName != null" >
+                XZQH_C_NAME = #{xzqhCName,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null" >
+                STATUS = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="createManId != null" >
+                CREATE_MAN_ID = #{createManId,jdbcType=VARCHAR},
+            </if>
+            <if test="createOrgId != null" >
+                CREATE_ORG_ID = #{createOrgId,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null" >
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUpdateUserId != null" >
+                LAST_UPDATE_USER_ID = #{lastUpdateUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="lastUpdateTime != null" >
+                LAST_UPDATE_TIME = #{lastUpdateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="versionTime != null" >
+                VERSION_TIME = #{versionTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="catalogId != null" >
+                CATALOG_ID = #{catalogId,jdbcType=VARCHAR},
+            </if>
+            <if test="extendColumn != null" >
+                EXTEND_COLUMN = #{extendColumn,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null" >
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+        </set>
+            where ID = #{id,jdbcType=VARCHAR}
+    </update>
+</mapper>
