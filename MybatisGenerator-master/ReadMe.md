@@ -1,7 +1,7 @@
 # MybatisGenerator
 
 ## QuickStart
-* 关于MybatisGenerator
+* **关于MybatisGenerator**
 MybatisGenerator是一款Mybatis/ibatis的代码生成工具，该项目是在1.3.2版本上进行修改、扩展，如果需要1.3.2版的源码，可通过Maven获得
 ```
 <dependency>
@@ -10,15 +10,15 @@ MybatisGenerator是一款Mybatis/ibatis的代码生成工具，该项目是在1.
         <version>1.3.2</version>
 </dependency>
 ```
-* 如何配置
+* **如何配置**
 通过文件**generatorConfig.xml**进行配置，文件中有详细注释
 
-* 如何运行
+* **如何运行**
 找到 src -> org.mybatis.generator -> api -> **ShellRunner.java** 运行
 
 
 ## 进阶 
-* 关键类解析
+* **关键类解析**
 1.  **配置文件解析器 MyBatisGeneratorConfigurationParser**
 
 该类对generatorConfig.xml进行解析，并将解析结果放在成员变量properties中。在扩展了xml/dtd之后需要修改该类，才能将配置信息加载到Java中。
@@ -39,8 +39,9 @@ IntrospectedTable是数据库表在Java中的抽象，它存放了tableConfigura
 
 在注释生成器中我们可以控制生成代码的注释
 
-* 如何进行扩展
+* **如何进行扩展**
 1. 通过修改 mybatis-generator-config_1_0.dtd 约束文件 以及 generatorConfig.xml 配置文件可配置更多信息，关键类获取到后进行处理，使代码生成功能更全面更强大
+
 2. 扩展方法、扩展类，例如如果想生成html、js代码，则需要有JavaScriptElement.java、JavaScriptMethod.java……
 
 ---
